@@ -1,5 +1,5 @@
 import { Random } from 'meteor/random';
-import { OracleApiDemo } from './connectors'
+import { OracleApiDemo, APIOracle } from './connectors'
 
 export const resolvers = {
   Query: {
@@ -12,6 +12,11 @@ export const resolvers = {
     getOracleApiDemo(){
       return OracleApiDemo.getOne();
     },
+    apiOracle(_, args) {
+      // debugging the content in args
+      // console.log(args);
+      return APIOracle.get(args);
+    }
   },
   User: {
     emails: ({emails}) => emails,
